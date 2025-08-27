@@ -1,24 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import Login from "./cors/Login.jsx";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import Read from "./cors/Read";
+import List from "./cors/List";
+import Register from "./cors/Register";
+import Logout from "./cors/Logout";
+import Modify from "./cors/Modify";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <Logout/>
+        <Routes>
+          <Route index element={<Login />} />
+          <Route path="read/:num" element={<Read />} />
+          <Route path="list" element={<List />} />
+          <Route path="register" element={<Register />} />
+          <Route path="modify/:num" element={<Modify/>}/>
+        </Routes>
+      </BrowserRouter>
   );
 }
 
